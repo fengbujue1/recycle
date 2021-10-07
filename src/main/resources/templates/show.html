@@ -1,0 +1,14 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head> <meta charset="UTF-8" /> <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/></head>
+<body>
+	<p/>
+	<p >委托单位：<span th:text="${client}"/></p>
+	<p >报告编号：<span th:text="${number}"/></p>
+	<p >试验项目：<span th:text="${projectName}"/></p>
+	<p >签发时间：<span th:text="${date}"/></p>
+	<p >审核/审批人：<span th:text="${auditPerson}"/></p>
+	<p >检测结果：<span th:text="${result}"/></p>
+	<p ><span th:text="${extraText}"/></p>
+</body>
+</html>

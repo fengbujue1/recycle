@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhouyunji.dao.OPTMapper">
+
+    <select id="selectUser" resultType="com.zhouyunji.bean.LoginData">
+        select * from QR_user where userName = #{userName}
+    </select>
+
+    <select id="selectFormData" resultType="com.zhouyunji.bean.FormData">
+        select * from QR_data where file_Name = #{fileName}
+    </select>
+
+    <insert id="insertData" parameterType="com.zhouyunji.bean.FormData">
+         insert into QR_data(client,number,projectName,date,auditPerson,result,extraText,file_name)
+        values (#{client},#{number},#{projectName},#{date},#{auditPerson},#{result},#{extraText},#{fileName})
+    </insert>
+    <insert id="insertMappingRelation" parameterType="com.zhouyunji.bean.MappingRelation">
+         insert into QR_relation(QRLocation,userId,fileName)
+        values (#{QRLocation},#{userId},#{fileName})
+    </insert>
+
+    <resultMap id="transFileName" type="com.zhouyunji.bean.FormData">
+        <id column="id" property="id"/>
+        <result column="file_name" property="fileName"/>
+    </resultMap>
+</mapper>
