@@ -5,6 +5,7 @@ import com.zhouyunji.util.PathUtil;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import java.util.HashMap;
 @RequestMapping("/test")
 public class Hello {
     @RequestMapping("/hello")
+    @ResponseBody
     public String hello() {
         return "hello";
     }
@@ -39,10 +41,9 @@ public class Hello {
         return bytes;
     }
 
-    @RequestMapping("/receivePararm")
+    @GetMapping("/receivePararm")
     @ResponseBody
-    public String receivePararm(FormData formData) {
-        System.out.println(formData);
+    public String receivePararm() {
         return "hello";
     }
 

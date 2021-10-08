@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhouyunji.dao.AddressDao">
+
+    <insert id="insertAddress" parameterType="com.zhouyunji.bean.Address">
+         insert into address(user_id,name,phone_no,city,town,street,house,detail,is_default)
+        values (#{userId},#{name},#{phoneNo},#{city},#{town},#{street},#{house},#{detail},#{isDefault})
+    </insert>
+
+    <select id="getAllAddress" resultType="com.zhouyunji.bean.Address">
+        select * from address where userId = #{userId}
+    </select>
+
+    <update id="updateAddress" parameterType="com.zhouyunji.bean.Address">
+        update address
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name!=null">name=#{name},</if>
+            <if test="phoneNo!=null">phone_no=#{phoneNo},</if>
+            <if test="city!=null">city=#{city},</if>
+            <if test="town!=null">town=#{town},</if>
+            <if test="street!=street">street=#{street},</if>
+            <if test="house!=null">house=#{house},</if>
+            <if test="detail!=null">detail=#{detail},</if>
+            <if test="isDefault!=null">is_default=#{isDefault},</if>
+        </trim>
+        WHERE user_id=#{userId}
+    </update>
+</mapper>
