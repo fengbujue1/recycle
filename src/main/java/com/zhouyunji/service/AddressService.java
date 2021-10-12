@@ -1,6 +1,6 @@
 package com.zhouyunji.service;
 
-import com.zhouyunji.bean.Address;
+import com.zhouyunji.bean.address.Address;
 import com.zhouyunji.dao.AddressDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class AddressService {
             for (Address address1 : allAddress) {
                 if (address1.isDefault()) {
                     Address updateAddress = new Address();
-                    updateAddress.setDefault(false);
+                    updateAddress.setIsDefault(false);
                     updateAddress.setUserId(address1.getUserId());
                     addressDao.updateAddress(updateAddress);
                 }
@@ -28,14 +28,14 @@ public class AddressService {
         }
         addressDao.insertAddress(address);
     }
-    @Transactional
     public List<Address> queryAddresses(Integer userId) {
         return addressDao.getAllAddress(userId);
 
     }
-    @Transactional
     public void deleteAddress(Integer id) {
         addressDao.deleteAddress(id);
-
+    }
+    public void updateAddress(Address address) {
+        addressDao.updateAddress(address);
     }
 }

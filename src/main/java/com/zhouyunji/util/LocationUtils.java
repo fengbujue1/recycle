@@ -1,6 +1,6 @@
 package com.zhouyunji.util;
 
-import com.zhouyunji.bean.Location;
+import com.zhouyunji.bean.address.Location;
 
 import java.util.Map;
 

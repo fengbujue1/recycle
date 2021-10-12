@@ -1,10 +1,9 @@
 package com.zhouyunji.controller;
 
-import com.zhouyunji.bean.Address;
-import com.zhouyunji.bean.FormData;
+import com.zhouyunji.bean.address.Address;
+import com.zhouyunji.bean.recycle.RecycleType;
 import com.zhouyunji.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,6 +62,25 @@ public class AddressController {
         String result = "fail";
         try {
             addressService.deleteAddress(id);
+            result = "success";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+    /**
+     * 更新个人收货地址
+     *
+     * TODO 先全量更新，如果前端传太多冗余数据觉得不方便，可以指定字段更新
+     * @param address 新地址
+     * @return
+     */
+    @PostMapping(value = "/update")
+    @ResponseBody
+    public String updateAddress(Address address) {
+        String result = "fail";
+        try {
+            addressService.updateAddress(address);
             result = "success";
         } catch (Exception e) {
             e.printStackTrace();

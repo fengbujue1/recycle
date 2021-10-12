@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhouyunji.dao.AddressDao">
 
-    <insert id="insertAddress" parameterType="com.zhouyunji.bean.Address">
-         insert into address(user_id,name,phone_no,city,town,street,house,detail,is_default)
+    <insert id="insertAddress" parameterType="com.zhouyunji.bean.address.Address">
+         insert into address(user_id,name,phone_no,city,town,street,house,detail,isDefault)
         values (#{userId},#{name},#{phoneNo},#{city},#{town},#{street},#{house},#{detail},#{isDefault})
     </insert>
 
-    <select id="getAllAddress" resultType="com.zhouyunji.bean.Address" resultMap="trans">
+    <select id="getAllAddress" resultType="com.zhouyunji.bean.address.Address" resultMap="trans">
         select * from address where user_id = #{userId}
     </select>
 
@@ -15,7 +15,7 @@
         delete from address where id = #{id}
     </delete>
 
-    <update id="updateAddress" parameterType="com.zhouyunji.bean.Address">
+    <update id="updateAddress" parameterType="com.zhouyunji.bean.address.Address">
         update address
         <trim prefix="set" suffixOverrides=",">
             <if test="name!=null">name=#{name},</if>
@@ -25,12 +25,12 @@
             <if test="street!=street">street=#{street},</if>
             <if test="house!=null">house=#{house},</if>
             <if test="detail!=null">detail=#{detail},</if>
-            <if test="isDefault!=null">is_default=#{isDefault},</if>
+            <if test="isDefault!=null">isDefault=#{isDefault},</if>
         </trim>
-        WHERE user_id=#{userId}
+        WHERE id=#{id}
     </update>
 
-    <resultMap id="trans" type="com.zhouyunji.bean.Address">
+    <resultMap id="trans" type="com.zhouyunji.bean.address.Address">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
         <result column="name" property="name"/>

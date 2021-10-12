@@ -1,4 +1,4 @@
-package com.zhouyunji.bean;
+package com.zhouyunji.bean.address;
 
 /**
  * 地址

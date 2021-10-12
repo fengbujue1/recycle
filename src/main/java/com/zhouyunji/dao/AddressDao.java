@@ -1,7 +1,6 @@
 package com.zhouyunji.dao;
 
-import com.zhouyunji.bean.Address;
-import com.zhouyunji.bean.FormData;
+import com.zhouyunji.bean.address.Address;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.zhouyunji.service;
 
-import com.zhouyunji.bean.Location;
+import com.zhouyunji.bean.address.Location;
 import com.zhouyunji.dao.LocationDao;
 import com.zhouyunji.util.LocationUtils;
 import org.springframework.beans.factory.annotation.Autowired;

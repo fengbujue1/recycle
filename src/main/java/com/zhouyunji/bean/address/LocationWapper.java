@@ -1,4 +1,4 @@
-package com.zhouyunji.bean;
+package com.zhouyunji.bean.address;
 
 import java.util.Map;
 

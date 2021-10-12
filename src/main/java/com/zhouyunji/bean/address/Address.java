@@ -1,4 +1,4 @@
-package com.zhouyunji.bean;
+package com.zhouyunji.bean.address;
 
 public class Address {
     private Integer id;//地址唯一id
@@ -17,7 +17,7 @@ public class Address {
         return isDefault;
     }
 
-    public void setDefault(boolean aDefault) {
+    public void setIsDefault(boolean aDefault) {
         isDefault = aDefault;
     }
 
