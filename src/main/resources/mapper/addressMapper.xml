@@ -7,9 +7,13 @@
         values (#{userId},#{name},#{phoneNo},#{city},#{town},#{street},#{house},#{detail},#{isDefault})
     </insert>
 
-    <select id="getAllAddress" resultType="com.zhouyunji.bean.Address">
-        select * from address where userId = #{userId}
+    <select id="getAllAddress" resultType="com.zhouyunji.bean.Address" resultMap="trans">
+        select * from address where user_id = #{userId}
     </select>
+
+    <delete id="deleteAddress" >
+        delete from address where id = #{id}
+    </delete>
 
     <update id="updateAddress" parameterType="com.zhouyunji.bean.Address">
         update address
@@ -25,4 +29,17 @@
         </trim>
         WHERE user_id=#{userId}
     </update>
+
+    <resultMap id="trans" type="com.zhouyunji.bean.Address">
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="name" property="name"/>
+        <result column="phone_no" property="phoneNo"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="town" property="town"/>
+        <result column="street" property="street"/>
+        <result column="house" property="house"/>
+        <result column="isDefault" property="isDefault"/>
+    </resultMap>
 </mapper>

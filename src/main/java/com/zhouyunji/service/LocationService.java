@@ -37,7 +37,7 @@ public class LocationService {
                 subLocationMap.put(location, createLocationMapByParentId(location.getId()));
             }
         }
-        return null;
+        return subLocationMap;
 
     }
 }

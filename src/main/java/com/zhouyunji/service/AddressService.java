@@ -28,4 +28,14 @@ public class AddressService {
         }
         addressDao.insertAddress(address);
     }
+    @Transactional
+    public List<Address> queryAddresses(Integer userId) {
+        return addressDao.getAllAddress(userId);
+
+    }
+    @Transactional
+    public void deleteAddress(Integer id) {
+        addressDao.deleteAddress(id);
+
+    }
 }

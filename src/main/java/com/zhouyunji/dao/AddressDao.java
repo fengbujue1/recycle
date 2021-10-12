@@ -11,4 +11,5 @@ public interface AddressDao {
     void insertAddress(Address Address);
     List<Address> getAllAddress(int userId);
     void updateAddress(Address address);
+    void deleteAddress(Integer id);
 }

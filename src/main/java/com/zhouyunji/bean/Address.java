@@ -1,9 +1,10 @@
 package com.zhouyunji.bean;
 
 public class Address {
+    private Integer id;//地址唯一id
     private Integer userId;//用户唯一id
-    private String name;
-    private String phoneNo;
+    private String name;//用户名
+    private String phoneNo;//联系电话
     private String province;//省
     private String city;//市
     private String town;//镇
@@ -18,6 +19,14 @@ public class Address {
 
     public void setDefault(boolean aDefault) {
         isDefault = aDefault;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Integer getUserId() {
