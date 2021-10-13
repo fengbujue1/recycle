@@ -1,4 +1,4 @@
-package com.zhouyunji.bean.recycle;
+package com.zhouyunji.bean.recycle.enmu;
 
 public enum  RecycleType {
     WASTE_PAPE(1),//废纸
@@ -19,7 +19,7 @@ public enum  RecycleType {
     public int typeCode() {
         return typeCode;
     }
-    public RecycleType getRecycleTypeByCode(int typeCode) {
+    public static RecycleType getRecycleTypeByCode(int typeCode) {
         switch (typeCode) {
             case 1:
                 return RecycleType.WASTE_PAPE;

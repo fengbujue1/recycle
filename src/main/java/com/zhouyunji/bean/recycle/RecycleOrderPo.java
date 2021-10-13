@@ -2,18 +2,21 @@ package com.zhouyunji.bean.recycle;
 
 import java.util.List;
 
-/**
- * 回收订单：用于登记一笔回收的基本信息
- */
-public class RecycleOrderVo {
-    //    private Integer id;
+public class RecycleOrderPo {
+    private Integer id;
     private Integer userId;//用户id
     private Integer recycleType;//1:废纸 2：塑料 3：家电 4：手机
-    private List<RecycleItem> items;
     private String time;//为空则代表尽快上门
     private int addressId;//回收地址
     private String remark;//备注留言
-    private int status;//订单状态 1:未接单(初始) 2：已接单 3：已完成 4：已取消
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public Integer getRecycleType() {
         return recycleType;
@@ -21,14 +24,6 @@ public class RecycleOrderVo {
 
     public void setRecycleType(Integer recycleType) {
         this.recycleType = recycleType;
-    }
-
-    public List<RecycleItem> getItems() {
-        return items;
-    }
-
-    public void setItems(List<RecycleItem> items) {
-        this.items = items;
     }
 
     public String getTime() {
@@ -53,13 +48,5 @@ public class RecycleOrderVo {
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 }

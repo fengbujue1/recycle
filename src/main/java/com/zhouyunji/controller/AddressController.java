@@ -1,7 +1,6 @@
 package com.zhouyunji.controller;
 
 import com.zhouyunji.bean.address.Address;
-import com.zhouyunji.bean.recycle.RecycleType;
 import com.zhouyunji.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
