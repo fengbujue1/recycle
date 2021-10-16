@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * 回收
  */
@@ -22,9 +24,9 @@ public class RecycleOrderController {
      * @param recycleOrderVo 预约信息
      * @return
      */
-    @PostMapping(value = "/submit")
+    @PutMapping(value = "/submit",produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public String submit(RecycleOrderVo recycleOrderVo) {
+    public String submit(@RequestBody RecycleOrderVo recycleOrderVo) {
 
         String result = "fail";
         try {
@@ -44,7 +46,7 @@ public class RecycleOrderController {
      */
     @GetMapping(value = "/query")
     @ResponseBody
-    public RecycleOrderVo query(String userId, int status) {
+    public List<RecycleOrderVo> query(String userId, int status) {
         return recycleOrderService.queryOrders(userId, status);
     }
 }

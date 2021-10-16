@@ -4,8 +4,17 @@ import com.zhouyunji.bean.recycle.enmu.HeightRange;
 import com.zhouyunji.bean.recycle.enmu.RecycleKindByType;
 
 public class RecycleItem {
+    private String orderId;
     private int recycleKind;
     private int heightRange;
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
 
     public int getRecycleKind() {
         return recycleKind;
@@ -23,11 +32,11 @@ public class RecycleItem {
         this.heightRange = heightRange;
     }
 
-    public HeightRange getHeightRangeEnum() {
-        return HeightRange.getHeightRangeByRangeCode(heightRange);
-    }
-    public RecycleKindByType setRecycleKindEnum(int recycleKind) {
-        return RecycleKindByType.getRecycleTypeByCode(recycleKind);
-    }
+//    public HeightRange getHeightRangeEnum() {
+//        return HeightRange.getHeightRangeByRangeCode(heightRange);
+//    }
+//    public RecycleKindByType getRecycleKindEnum(int recycleKind) {
+//        return RecycleKindByType.getRecycleTypeByCode(recycleKind);
+//    }
 
 }

@@ -10,5 +10,5 @@ import java.util.List;
 public interface RecycleItemDao {
     void insertRecycleItem(RecycleItem recycleItem);
 
-    List<RecycleItem> queryItemsByOrderId(int orderId);
+    List<RecycleItem> queryItemsByOrderId(String orderId);
 }

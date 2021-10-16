@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhouyunji.dao.RecycleOrderDao">
+
+    <insert id="insertRecycleOrder" parameterType="com.zhouyunji.bean.recycle.RecycleOrderPo">
+         insert into recycle_order(order_id,user_id,recycle_type,address_id,time,remark,status)
+        values (#{orderId},#{userId},#{recycleType},#{addressId},#{time},#{remark},#{status})
+    </insert>
+
+    <select id="queryOrdersByUserIdAndStatus" resultType="com.zhouyunji.bean.recycle.RecycleOrderPo" resultMap="trans">
+        select * from recycle_order where user_id = #{userId} and status= #{status}
+    </select>
+
+
+    <update id="updateAddress" parameterType="com.zhouyunji.bean.recycle.RecycleOrderPo">
+        update address
+        <trim prefix="set" suffixOverrides=",">
+            <if test="name!=null">name=#{name},</if>
+            <if test="phoneNo!=null">phone_no=#{phoneNo},</if>
+            <if test="city!=null">city=#{city},</if>
+            <if test="town!=null">town=#{town},</if>
+            <if test="street!=street">street=#{street},</if>
+            <if test="house!=null">house=#{house},</if>
+            <if test="detail!=null">detail=#{detail},</if>
+            <if test="isDefault!=null">isDefault=#{isDefault},</if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+
+    <resultMap id="trans" type="com.zhouyunji.bean.recycle.RecycleOrderPo">
+        <id column="id" property="id"/>
+        <result column="order_id" property="orderId"/>
+        <result column="user_id" property="userId"/>
+        <result column="recycle_type" property="recycleType"/>
+        <result column="address_id" property="addressId"/>
+        <result column="time" property="time"/>
+        <result column="remark" property="remark"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+</mapper>

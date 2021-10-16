@@ -1,5 +1,6 @@
 package com.zhouyunji.bean.recycle;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -10,10 +11,18 @@ public class RecycleOrderVo {
     private Integer userId;//用户id
     private Integer recycleType;//1:废纸 2：塑料 3：家电 4：手机
     private List<RecycleItem> items;
-    private String time;//为空则代表尽快上门
+    private Date time;//为空则代表尽快上门
     private int addressId;//回收地址
     private String remark;//备注留言
     private int status;//订单状态 1:未接单(初始) 2：已接单 3：已完成 4：已取消
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public Integer getRecycleType() {
         return recycleType;
@@ -31,11 +40,11 @@ public class RecycleOrderVo {
         this.items = items;
     }
 
-    public String getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

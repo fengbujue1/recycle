@@ -32,5 +32,4 @@ public enum OrderStatus {
         }
         throw new RuntimeException("错误的订单状态");
     }
-
 }

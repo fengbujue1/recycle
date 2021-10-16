@@ -23,5 +23,7 @@ public enum HeightRange {
         }
         throw new RuntimeException("错误的重量区间");
     }
-
+    public int getRangeCode() {
+        return rangeCode;
+    }
 }
