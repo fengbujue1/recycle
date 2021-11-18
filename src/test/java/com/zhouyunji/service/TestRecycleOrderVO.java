@@ -3,7 +3,7 @@ package com.zhouyunji.service;
 import com.alibaba.fastjson.JSON;
 import com.zhouyunji.bean.recycle.RecycleItem;
 import com.zhouyunji.bean.recycle.RecycleOrderVo;
-import com.zhouyunji.bean.recycle.enmu.HeightRange;
+import com.zhouyunji.bean.recycle.enmu.WeightRange;
 import com.zhouyunji.bean.recycle.enmu.OrderStatus;
 import com.zhouyunji.bean.recycle.enmu.RecycleKindByType;
 import com.zhouyunji.bean.recycle.enmu.RecycleType;
@@ -23,7 +23,7 @@ public class TestRecycleOrderVO {
 
         ArrayList<RecycleItem> recycleItems = new ArrayList<>();
         RecycleItem recycleItem = new RecycleItem();
-        recycleItem.setHeightRange(HeightRange.RANGE1.getRangeCode());
+        recycleItem.setWeightRange(WeightRange.RANGE1.getRangeCode());
         recycleItem.setRecycleKind(RecycleKindByType.MIXTURE_PAPE.typeCode());
         recycleItems.add(recycleItem);
         recycleOrderVo.setItems(recycleItems);

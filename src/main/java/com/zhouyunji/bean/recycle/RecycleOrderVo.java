@@ -11,10 +11,11 @@ public class RecycleOrderVo {
     private Integer userId;//用户id
     private Integer recycleType;//1:废纸 2：塑料 3：家电 4：手机
     private List<RecycleItem> items;
-    private Date time;//为空则代表尽快上门
+    private Date time;//预约时间，为空则代表尽快上门
     private int addressId;//回收地址
     private String remark;//备注留言
     private int status;//订单状态 1:未接单(初始) 2：已接单 3：已完成 4：已取消
+    private String timeStr;//预约时间的字符串形式
 
     public Integer getUserId() {
         return userId;
@@ -70,5 +71,13 @@ public class RecycleOrderVo {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getTimeStr() {
+        return timeStr;
+    }
+
+    public void setTimeStr(String timeStr) {
+        this.timeStr = timeStr;
     }
 }

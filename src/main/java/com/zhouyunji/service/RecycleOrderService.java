@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -23,14 +26,18 @@ public class RecycleOrderService {
     RecycleItemDao recycleItemDao;
 
     @Transactional
-    public void submitOrder(RecycleOrderVo recycleOrderVo) {
-        if (OrderStatus.getStatusByCode(recycleOrderVo.getStatus()) != OrderStatus.NOT_ACCEPT) {
-            throw new RuntimeException("错误的初始订单状态:" + recycleOrderVo.getStatus());
-        }
+    public void submitOrder(RecycleOrderVo recycleOrderVo) throws ParseException {
         UUID uuid = UUID.randomUUID();
         RecycleOrderPo recycleOrderPo = new RecycleOrderPo();
         recycleOrderPo.setOrderId(uuid.toString());
+        //        重新转换时间
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        recycleOrderVo.setTime(simpleDateFormat.parse(recycleOrderVo.getTimeStr()));
         BeanCopyUtil.copyProperties(recycleOrderVo, recycleOrderPo, "");
+//        初始提交的订单，状态都为1
+        recycleOrderPo.setStatus(1);
+
+
         recycleOrderDao.insertRecycleOrder(recycleOrderPo);
         List<RecycleItem> items = recycleOrderVo.getItems();
         if (items.size() > 0) {

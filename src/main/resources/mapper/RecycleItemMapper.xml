@@ -3,8 +3,8 @@
 <mapper namespace="com.zhouyunji.dao.RecycleItemDao">
 
     <insert id="insertRecycleItem" parameterType="com.zhouyunji.bean.recycle.RecycleItem">
-         insert into recycle_item(order_id,recycle_kind,height_range)
-        values (#{orderId},#{recycleKind},#{heightRange})
+         insert into recycle_item(order_id,recycle_kind,weight_range)
+        values (#{orderId},#{recycleKind},#{weightRange})
     </insert>
 
     <select id="queryItemsByOrderId" resultType="com.zhouyunji.bean.recycle.RecycleItem" resultMap="trans">
@@ -30,6 +30,6 @@
         <!--<id column="id" property="id"/>-->
         <result column="order_id" property="orderId"/>
         <result column="recycle_kind" property="recycleKind"/>
-        <result column="height_range" property="heightRange"/>
+        <result column="weight_range" property="weightRange"/>
     </resultMap>
 </mapper>

@@ -1,12 +1,10 @@
 package com.zhouyunji.bean.recycle;
 
-import com.zhouyunji.bean.recycle.enmu.HeightRange;
-import com.zhouyunji.bean.recycle.enmu.RecycleKindByType;
 
 public class RecycleItem {
     private String orderId;
     private int recycleKind;
-    private int heightRange;
+    private int weightRange;
 
     public String getOrderId() {
         return orderId;
@@ -24,12 +22,12 @@ public class RecycleItem {
         this.recycleKind = recycleKind;
     }
 
-    public int getHeightRange() {
-        return heightRange;
+    public int getWeightRange() {
+        return weightRange;
     }
 
-    public void setHeightRange(int heightRange) {
-        this.heightRange = heightRange;
+    public void setWeightRange(int weightRange) {
+        this.weightRange = weightRange;
     }
 
 //    public HeightRange getHeightRangeEnum() {
