@@ -7,7 +7,7 @@ public class Address {
     private String phoneNo;//联系电话
     private String province;//省
     private String city;//市
-    private String town;//镇
+    private String town;//镇/区
     private String street;//街道
     private String house;//小区
     private String detail;//详细地址（楼 栋 单元）
