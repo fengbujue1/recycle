@@ -1,13 +1,13 @@
 package com.zhouyunji.bean.recycle.enmu;
 
 public enum RecycleKindByType {
-    MIXTURE_PAPE(1),//纯黄纸与纯花纸的混合
-    YELLOW_PAPE(2),//纯黄纸
-    FLOWER_PAPE(3),//纯花纸
-    OTHER_PAPE(4),//杂纸
-    PLASTIC_BOTTLE(5),//塑料瓶
-    NORMAL_APPLIANCES(6),//家电
-    NORMAL_PHONE(7);//手机
+    MIXTURE_PAPE(0),//纯黄纸与纯花纸的混合
+    YELLOW_PAPE(1),//纯黄纸
+    FLOWER_PAPE(2),//纯花纸
+    OTHER_PAPE(3),//杂纸
+    PLASTIC_BOTTLE(4),//塑料瓶
+    NORMAL_APPLIANCES(5),//家电
+    NORMAL_PHONE(6);//手机
 
     private int typeCode;
 

@@ -7,6 +7,7 @@ import com.zhouyunji.bean.recycle.enmu.OrderStatus;
 import com.zhouyunji.dao.RecycleItemDao;
 import com.zhouyunji.dao.RecycleOrderDao;
 import com.zhouyunji.util.BeanCopyUtil;
+import com.zhouyunji.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -32,7 +33,12 @@ public class RecycleOrderService {
         recycleOrderPo.setOrderId(uuid.toString());
         //        重新转换时间
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        recycleOrderVo.setTime(simpleDateFormat.parse(recycleOrderVo.getTimeStr()));
+        if ("尽快上门".equals(recycleOrderVo.getTimeStr())) {
+            recycleOrderVo.setTime(null);
+        } else {
+            recycleOrderVo.setTime(simpleDateFormat.parse(recycleOrderVo.getTimeStr()));
+        }
+
         BeanCopyUtil.copyProperties(recycleOrderVo, recycleOrderPo, "");
 //        初始提交的订单，状态都为1
         recycleOrderPo.setStatus(1);
@@ -59,6 +65,14 @@ public class RecycleOrderService {
             List<RecycleItem> recycleItems = recycleItemDao.queryItemsByOrderId(recycleOrderPo.getOrderId());
             RecycleOrderVo recycleOrderVo = new RecycleOrderVo();
             BeanCopyUtil.copyProperties(recycleOrderPo, recycleOrderVo, "");
+//            订单时间数据转换
+
+            if (recycleOrderVo.getTime() == null) {
+                recycleOrderVo.setTimeStr("尽快上门");
+            } else {
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                recycleOrderVo.setTimeStr(simpleDateFormat.format(recycleOrderVo.getTime()));
+            }
             recycleOrderVo.setItems(recycleItems);
             recycleOrderVos.add(recycleOrderVo);
         }

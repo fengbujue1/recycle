@@ -3,7 +3,7 @@ package com.zhouyunji.bean.address;
 public class Address {
     private String id;//地址唯一id
     private Integer userId;//用户唯一id
-    private String name;//用户名
+    private String name;//联系人姓名
     private String phoneNo;//联系电话
     private String town;//街道/乡镇
     private String districtCode;//区级码
