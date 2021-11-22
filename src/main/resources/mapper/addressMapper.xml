@@ -18,13 +18,14 @@
     <update id="updateAddress" parameterType="com.zhouyunji.bean.address.Address">
         update address
         <trim prefix="set" suffixOverrides=",">
-            <if test="name!=null">name=#{name},</if>
-            <if test="phoneNo!=null">phone_no=#{phoneNo},</if>
-            <if test="town!=null">town=#{town},</if>
-            <if test="detail!=null">detail=#{detail},</if>
-            <if test="isDefault!=null">isDefault=#{isDefault},</if>
+            <if test="#{name}!=null">name=#{name},</if>
+            <if test="#{phoneNo}!=null">phone_no=#{phoneNo},</if>
+            <if test="#{town}!=null">town=#{town},</if>
+            <if test="#{detail}!=null">detail=#{detail},</if>
+            <if test="#{districtCode}!=null">district_code=#{districtCode},</if>
+            <if test="#{isDefault}!=null">isDefault=#{isDefault},</if>
         </trim>
-        WHERE id=#{id}
+        WHERE id=#{id};
     </update>
 
     <resultMap id="trans" type="com.zhouyunji.bean.address.Address">
@@ -34,6 +35,7 @@
         <result column="phone_no" property="phoneNo"/>
         <result column="town" property="town"/>
         <result column="detail" property="detail"/>
+        <result column="district_code" property="districtCode"/>
         <result column="isDefault" property="isDefault"/>
     </resultMap>
 </mapper>

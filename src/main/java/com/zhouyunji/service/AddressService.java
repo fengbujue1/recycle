@@ -22,7 +22,7 @@ public class AddressService {
                 if (address1.isDefault()) {
                     Address updateAddress = new Address();
                     updateAddress.setIsDefault(false);
-                    updateAddress.setUserId(address1.getUserId());
+                    updateAddress.setId(address1.getId());
                     addressDao.updateAddress(updateAddress);
                 }
             }

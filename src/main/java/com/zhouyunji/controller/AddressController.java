@@ -27,7 +27,7 @@ public class AddressController {
      */
     @PutMapping(value = "/add")
     @ResponseBody
-    public String addAddress(Address address, HttpSession session, HttpServletResponse response) {
+    public String addAddress( @RequestBody Address address, HttpSession session, HttpServletResponse response) {
         String result = "fail";
         try {
             addressService.addAddress(address);
