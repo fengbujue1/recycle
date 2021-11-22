@@ -25,7 +25,7 @@ public class AddressController {
      * @param response
      * @return
      */
-    @PostMapping(value = "/add")
+    @PutMapping(value = "/add")
     @ResponseBody
     public String addAddress(Address address, HttpSession session, HttpServletResponse response) {
         String result = "fail";

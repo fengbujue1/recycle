@@ -3,8 +3,8 @@
 <mapper namespace="com.zhouyunji.dao.AddressDao">
 
     <insert id="insertAddress" parameterType="com.zhouyunji.bean.address.Address">
-         insert into address(user_id,name,phone_no,city,town,street,house,detail,isDefault)
-        values (#{userId},#{name},#{phoneNo},#{city},#{town},#{street},#{house},#{detail},#{isDefault})
+         insert into address(user_id,name,phone_no,town,detail,isDefault,district_code)
+        values (#{userId},#{name},#{phoneNo},#{town},#{detail},#{isDefault},#{districtCode})
     </insert>
 
     <select id="getAllAddress" resultType="com.zhouyunji.bean.address.Address" resultMap="trans">
@@ -20,10 +20,7 @@
         <trim prefix="set" suffixOverrides=",">
             <if test="name!=null">name=#{name},</if>
             <if test="phoneNo!=null">phone_no=#{phoneNo},</if>
-            <if test="city!=null">city=#{city},</if>
             <if test="town!=null">town=#{town},</if>
-            <if test="street!=street">street=#{street},</if>
-            <if test="house!=null">house=#{house},</if>
             <if test="detail!=null">detail=#{detail},</if>
             <if test="isDefault!=null">isDefault=#{isDefault},</if>
         </trim>
@@ -35,11 +32,8 @@
         <result column="user_id" property="userId"/>
         <result column="name" property="name"/>
         <result column="phone_no" property="phoneNo"/>
-        <result column="province" property="province"/>
-        <result column="city" property="city"/>
         <result column="town" property="town"/>
-        <result column="street" property="street"/>
-        <result column="house" property="house"/>
+        <result column="detail" property="detail"/>
         <result column="isDefault" property="isDefault"/>
     </resultMap>
 </mapper>

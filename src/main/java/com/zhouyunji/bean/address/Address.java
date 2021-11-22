@@ -1,15 +1,13 @@
 package com.zhouyunji.bean.address;
 
 public class Address {
-    private Integer id;//地址唯一id
+    private String id;//地址唯一id
     private Integer userId;//用户唯一id
     private String name;//用户名
     private String phoneNo;//联系电话
-    private String province;//省
-    private String city;//市
-    private String town;//镇
-    private String street;//街道
-    private String house;//小区
+    private String town;//街道/乡镇
+    private String districtCode;//区级码
+//    private String house;//小区
     private String detail;//详细地址（楼 栋 单元）
     private boolean isDefault;//是否默认地址
 
@@ -21,11 +19,11 @@ public class Address {
         isDefault = aDefault;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -53,22 +51,6 @@ public class Address {
         this.phoneNo = phoneNo;
     }
 
-    public String getProvince() {
-        return province;
-    }
-
-    public void setProvince(String province) {
-        this.province = province;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
     public String getTown() {
         return town;
     }
@@ -77,21 +59,25 @@ public class Address {
         this.town = town;
     }
 
-    public String getStreet() {
-        return street;
+    public String getDistrictCode() {
+        return districtCode;
     }
 
-    public void setStreet(String street) {
-        this.street = street;
+    public void setDistrictCode(String districtCode) {
+        this.districtCode = districtCode;
     }
 
-    public String getHouse() {
-        return house;
+    public void setDefault(boolean aDefault) {
+        isDefault = aDefault;
     }
 
-    public void setHouse(String house) {
-        this.house = house;
-    }
+    //    public String getHouse() {
+//        return house;
+//    }
+//
+//    public void setHouse(String house) {
+//        this.house = house;
+//    }
 
     public String getDetail() {
         return detail;
