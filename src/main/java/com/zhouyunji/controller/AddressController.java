@@ -55,9 +55,9 @@ public class AddressController {
      * @param id 地址id
      * @return
      */
-    @DeleteMapping(value = "/delete")
+    @PostMapping(value = "/delete/{id}")
     @ResponseBody
-    public String deleteAddress(Integer id) {
+    public String deleteAddress(@PathVariable Integer id) {
         String result = "fail";
         try {
             addressService.deleteAddress(id);
