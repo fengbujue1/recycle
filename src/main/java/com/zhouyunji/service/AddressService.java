@@ -37,6 +37,17 @@ public class AddressService {
         addressDao.deleteAddress(id);
     }
     public void updateAddress(Address address) {
+        if (address.isDefault()) {
+            List<Address> allAddress = addressDao.getAllAddress(address.getUserId());
+            for (Address address1 : allAddress) {
+                if (address1.isDefault()) {
+                    Address updateAddress = new Address();
+                    updateAddress.setIsDefault(false);
+                    updateAddress.setId(address1.getId());
+                    addressDao.updateAddress(updateAddress);
+                }
+            }
+        }
         addressDao.updateAddress(address);
     }
 }

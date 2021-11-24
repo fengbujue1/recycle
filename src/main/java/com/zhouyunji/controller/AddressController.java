@@ -51,13 +51,14 @@ public class AddressController {
 
     /**
      * 删除收货地址
+     * 并且返回新的地址列表
      *
      * @param id 地址id
      * @return
      */
     @PostMapping(value = "/delete/{id}")
     @ResponseBody
-    public String deleteAddress(@PathVariable Integer id) {
+    public  String deleteAddress(@PathVariable Integer id,Integer userId) {
         String result = "fail";
         try {
             addressService.deleteAddress(id);
@@ -66,6 +67,7 @@ public class AddressController {
             e.printStackTrace();
         }
         return result;
+
     }
     /**
      * 更新个人收货地址
@@ -76,7 +78,7 @@ public class AddressController {
      */
     @PostMapping(value = "/update")
     @ResponseBody
-    public String updateAddress(Address address) {
+    public String updateAddress(@RequestBody Address address) {
         String result = "fail";
         try {
             addressService.updateAddress(address);
