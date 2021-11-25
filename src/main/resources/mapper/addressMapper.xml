@@ -11,6 +11,10 @@
         select * from address where user_id = #{userId}
     </select>
 
+    <select id="getAddressStrById" resultType="java.lang.String">
+        select detail from address where id = #{id}
+    </select>
+
     <delete id="deleteAddress" >
         delete from address where id = #{id}
     </delete>

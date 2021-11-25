@@ -5,6 +5,24 @@ public class RecycleItem {
     private String orderId;
     private int recycleKind;
     private int weightRange;
+    private String recycleKindStr;
+    private String weightRangeStr;
+
+    public String getRecycleKindStr() {
+        return recycleKindStr;
+    }
+
+    public void setRecycleKindStr(String recycleKindStr) {
+        this.recycleKindStr = recycleKindStr;
+    }
+
+    public String getWeightRangeStr() {
+        return weightRangeStr;
+    }
+
+    public void setWeightRangeStr(String weightRangeStr) {
+        this.weightRangeStr = weightRangeStr;
+    }
 
     public String getOrderId() {
         return orderId;

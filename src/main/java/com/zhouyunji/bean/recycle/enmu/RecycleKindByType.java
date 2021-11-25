@@ -42,4 +42,18 @@ public enum RecycleKindByType {
         throw new RuntimeException("错误的回收类型");
     }
 
+    public static String getRecycleKindStrByCode(int typeCode) {
+        switch (typeCode) {
+            case 0:
+                return "统纸（纯黄纸，纯花纸混合一块）";
+            case 1:
+                return "纯黄纸（如空调箱，快递箱等）";
+            case 2:
+                return "纯花纸（如饮料箱等）";
+            case 3:
+                return "杂纸";
+        }
+        throw new RuntimeException("错误的回收类型");
+    }
+
 }

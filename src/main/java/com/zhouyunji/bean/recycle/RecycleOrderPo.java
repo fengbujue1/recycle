@@ -9,9 +9,18 @@ public class RecycleOrderPo {
     private Integer userId;//用户id
     private Integer recycleType;//1:废纸 2：塑料 3：家电 4：手机
     private Date time;//为空则代表尽快上门
+    private Date submitTime;//下单时间
     private int addressId;//回收地址
     private String remark;//备注留言
     private int status;//订单状态 1:未接单(初始) 2：已接单 3：已完成 4：已取消
+
+    public Date getSubmitTime() {
+        return submitTime;
+    }
+
+    public void setSubmitTime(Date submitTime) {
+        this.submitTime = submitTime;
+    }
 
     public int getId() {
         return id;
