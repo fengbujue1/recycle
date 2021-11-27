@@ -5,6 +5,7 @@ import com.zhouyunji.bean.recycle.RecycleOrderVo;
 import com.zhouyunji.dao.RecycleOrderDao;
 import com.zhouyunji.service.AddressService;
 import com.zhouyunji.service.RecycleOrderService;
+import com.zhouyunji.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -48,5 +49,14 @@ public class RecycleOrderController {
     @ResponseBody
     public List<RecycleOrderVo> query(String userId, int status) {
         return recycleOrderService.queryOrders(userId, status);
+    }
+    /**
+     * 订单删除
+     */
+    @DeleteMapping(value = "/delete")
+    @ResponseBody
+    public List<RecycleOrderVo> delete(String orederId,Integer currentStatusIndex,String userId) {
+        recycleOrderService.cancelOrder(orederId);
+        return recycleOrderService.queryOrders(userId, currentStatusIndex);
     }
 }

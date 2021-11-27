@@ -93,6 +93,15 @@ public class RecycleOrderService {
         return recycleOrderVos;
     }
 
+    /**
+     *
+     * @param orderId
+     * @return
+     */
+    public void cancelOrder(String orderId) {
+        recycleOrderDao.updateStatus(OrderStatus.CANCLED.statusCode(),orderId);
+    }
+
     private void transItemName(List<RecycleItem> recycleItems) {
         for (RecycleItem recycleItem : recycleItems) {
             recycleItem.setRecycleKindStr(RecycleKindByType.getRecycleKindStrByCode(recycleItem.getRecycleKind()));

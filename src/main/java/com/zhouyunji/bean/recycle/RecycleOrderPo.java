@@ -13,6 +13,15 @@ public class RecycleOrderPo {
     private int addressId;//回收地址
     private String remark;//备注留言
     private int status;//订单状态 1:未接单(初始) 2：已接单 3：已完成 4：已取消
+    private boolean canceled = false;//订单是否取消
+
+    public boolean isCanceled() {
+        return canceled;
+    }
+
+    public void setCanceled(boolean canceled) {
+        this.canceled = canceled;
+    }
 
     public Date getSubmitTime() {
         return submitTime;

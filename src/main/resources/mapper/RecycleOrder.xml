@@ -12,19 +12,10 @@
     </select>
 
 
-    <update id="updateAddress" parameterType="com.zhouyunji.bean.recycle.RecycleOrderPo">
-        update address
-        <trim prefix="set" suffixOverrides=",">
-            <if test="name!=null">name=#{name},</if>
-            <if test="phoneNo!=null">phone_no=#{phoneNo},</if>
-            <if test="city!=null">city=#{city},</if>
-            <if test="town!=null">town=#{town},</if>
-            <if test="street!=street">street=#{street},</if>
-            <if test="house!=null">house=#{house},</if>
-            <if test="detail!=null">detail=#{detail},</if>
-            <if test="isDefault!=null">isDefault=#{isDefault},</if>
-        </trim>
-        WHERE id=#{id}
+    <update id="updateStatus" parameterType="com.zhouyunji.bean.recycle.RecycleOrderPo">
+        update recycle_order
+        set status=#{status}
+        WHERE order_id=#{orderId}
     </update>
 
     <resultMap id="trans" type="com.zhouyunji.bean.recycle.RecycleOrderPo">
