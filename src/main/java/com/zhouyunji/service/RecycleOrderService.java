@@ -98,8 +98,10 @@ public class RecycleOrderService {
      * @param orderId
      * @return
      */
-    public void cancelOrder(String orderId) {
+    public List<RecycleOrderVo> cancelOrder(String orderId,String userId, int currentStatusIndex) {
         recycleOrderDao.updateStatus(OrderStatus.CANCLED.statusCode(),orderId);
+        return queryOrders(userId, currentStatusIndex);
+
     }
 
     private void transItemName(List<RecycleItem> recycleItems) {

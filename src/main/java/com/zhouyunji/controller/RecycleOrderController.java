@@ -2,6 +2,7 @@ package com.zhouyunji.controller;
 
 import com.zhouyunji.bean.address.Address;
 import com.zhouyunji.bean.recycle.RecycleOrderVo;
+import com.zhouyunji.bean.recycle.enmu.OrderStatus;
 import com.zhouyunji.dao.RecycleOrderDao;
 import com.zhouyunji.service.AddressService;
 import com.zhouyunji.service.RecycleOrderService;
@@ -50,13 +51,17 @@ public class RecycleOrderController {
     public List<RecycleOrderVo> query(String userId, int status) {
         return recycleOrderService.queryOrders(userId, status);
     }
+
     /**
-     * 订单删除
+     * 取消订单
      */
     @DeleteMapping(value = "/delete")
     @ResponseBody
-    public List<RecycleOrderVo> delete(String orederId,Integer currentStatusIndex,String userId) {
-        recycleOrderService.cancelOrder(orederId);
-        return recycleOrderService.queryOrders(userId, currentStatusIndex);
+    public List<RecycleOrderVo> delete(String orederId, Integer currentStatusIndex, String userId) {
+        if (currentStatusIndex > OrderStatus.ACCEPTED.statusCode()) {
+            throw new RuntimeException("当前状态订单不可取消");
+        }
+        return recycleOrderService.cancelOrder(orederId, userId, currentStatusIndex);
+
     }
 }
