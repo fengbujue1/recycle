@@ -1,19 +1,22 @@
 package com.zhouyunji.bean.user;
 
+import java.math.BigInteger;
+
 /**
  * 持久层的用户信息
  */
 public class UserInfoPo {
-    private String code;//code
+    private String openid;//openid
     private String nickname;//昵称
     private String img;//头像
 
-    public String getCode() {
-        return code;
+
+    public String getOpenid() {
+        return openid;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setOpenid(String openid) {
+        this.openid = openid;
     }
 
     public String getNickname() {

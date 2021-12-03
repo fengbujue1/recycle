@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhouyunji.dao.UserDao">
+
+    <insert id="addUser" parameterType="com.zhouyunji.dao.UserDao">
+         insert into user(openid)
+        values (#{openid})
+    </insert>
+
+    <select id="getUser" resultType="com.zhouyunji.dao.UserDao" resultMap="trans">
+        select * from user where openid = #{openid}
+    </select>
+
+    <update id="supplementUserInfo" parameterType="com.zhouyunji.dao.UserDao">
+        update address
+        <trim prefix="set" suffixOverrides=",">
+            <if test="openid != null">openid=#{openid},</if>
+            <if test="nickname != null">nickname=#{nickname},</if>
+            <if test="img!= null">img=#{img},</if>
+        </trim>
+        WHERE id=#{id};
+    </update>
+
+    <resultMap id="trans" type="com.zhouyunji.bean.user.UserInfoPo">
+        <result column="openid" property="openid"/>
+        <result column="nickname" property="nickname"/>
+        <result column="img" property="img"/>
+    </resultMap>
+</mapper>

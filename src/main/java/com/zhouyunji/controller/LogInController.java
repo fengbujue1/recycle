@@ -3,11 +3,13 @@ package com.zhouyunji.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.zhouyunji.bean.user.RegisterInfo;
+import com.zhouyunji.bean.user.UserInfoVO;
 import com.zhouyunji.service.UserService;
 import com.zhouyunji.util.HTTPUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -28,7 +30,7 @@ public class LogInController {
      */
     @PostMapping(value = "/login")
     @ResponseBody
-    public String login(String code) {
+    public UserInfoVO login(String code) {
         return userService.addUser(code);
     }
 
@@ -40,13 +42,8 @@ public class LogInController {
      */
     @PostMapping(value = "/register")
     @ResponseBody
-    public void addAddress(RegisterInfo registerInfo) {
-        String url = URL + code;
-        String str = HTTPUtil.httpRequest(url);
-        JSONObject jsonObject = JSON.parseObject(str);
-        String openid = (String) jsonObject.get("openid");
-        String sessionKey = (String) jsonObject.get("session_key");
-
+    public UserInfoVO addAddress(@RequestBody RegisterInfo registerInfo) {
+        return userService.addUser(registerInfo);
 
     }
 }

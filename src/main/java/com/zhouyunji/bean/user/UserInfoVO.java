@@ -7,7 +7,7 @@ public class UserInfoVO {
     private String token;//token
     private String nickname;//昵称
     private String img;//头像
-    private String isSupplement;//是否补充（用户是否点击过授权获取用户信息）
+    private Boolean isSupplement=false;//是否补充（用户是否点击过授权获取用户信息）
 
 
     public String getToken() {
@@ -30,15 +30,17 @@ public class UserInfoVO {
         return img;
     }
 
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public String getIsSupplement() {
+    public Boolean getSupplement() {
         return isSupplement;
     }
 
-    public void setIsSupplement(String isSupplement) {
-        this.isSupplement = isSupplement;
+    public void setSupplement(Boolean supplement) {
+        isSupplement = supplement;
     }
+
+    public void setImg(String img) {
+
+        this.img = img;
+    }
+
 }
