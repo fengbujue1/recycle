@@ -12,13 +12,12 @@
     </select>
 
     <update id="supplementUserInfo" parameterType="com.zhouyunji.dao.UserDao">
-        update address
+        update user
         <trim prefix="set" suffixOverrides=",">
-            <if test="openid != null">openid=#{openid},</if>
             <if test="nickname != null">nickname=#{nickname},</if>
             <if test="img!= null">img=#{img},</if>
         </trim>
-        WHERE id=#{id};
+        WHERE openid=#{openid};
     </update>
 
     <resultMap id="trans" type="com.zhouyunji.bean.user.UserInfoPo">

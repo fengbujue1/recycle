@@ -76,7 +76,7 @@ public class UserService {
             //新增用户
             userDao.addUser(openId);
         }
-        if (user.getNickname() != null || user.getImg() != null) {
+        if (registerInfo.getNickname() != null || registerInfo.getImg() != null) {
             BeanCopyUtil.copyProperties(registerInfo, user, null);
             userDao.supplementUserInfo(user);
             BeanCopyUtil.copyProperties(user, userInfoVO, null);
