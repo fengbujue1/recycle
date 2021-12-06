@@ -10,6 +10,6 @@ public class TokenUtil {
         if (StringUtils.isBlank(token)) {
             return "";
         }
-        return token.substring(0, token.length() - 2);
+        return token.substring(0, token.length() - 1);
     }
 }

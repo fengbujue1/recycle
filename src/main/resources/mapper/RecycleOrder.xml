@@ -12,7 +12,7 @@
     </select>
 
 
-    <update id="updateStatus" parameterType="com.zhouyunji.bean.recycle.RecycleOrderPo">
+    <update id="updateStatus" >
         update recycle_order
         set status=#{status}
         WHERE order_id=#{orderId}

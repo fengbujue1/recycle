@@ -2,13 +2,15 @@ package com.zhouyunji.bean.address;
 
 public class Address {
     private String id;//地址唯一id
-    private Integer userId;//用户唯一id
+    private String token;//用户token
     private String name;//联系人姓名
     private String phoneNo;//联系电话
     private String town;//街道/乡镇
     private String districtCode;//区级码
 //    private String house;//小区
     private String detail;//详细地址（楼 栋 单元）
+    private String openid;//唯一id
+
     private boolean isDefault;//是否默认地址
 
     public boolean isDefault() {
@@ -27,12 +29,12 @@ public class Address {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getToken() {
+        return token;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getName() {
@@ -85,5 +87,13 @@ public class Address {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public String getOpenid() {
+        return openid;
+    }
+
+    public void setOpenid(String openid) {
+        this.openid = openid;
     }
 }

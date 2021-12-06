@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper
 public interface AddressDao {
     void insertAddress(Address Address);
-    List<Address> getAllAddress(int userId);
+    List<Address> getAllAddress(String openid);
     void updateAddress(Address address);
     void deleteAddress(Integer id);
 

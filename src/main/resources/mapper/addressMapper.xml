@@ -3,12 +3,12 @@
 <mapper namespace="com.zhouyunji.dao.AddressDao">
 
     <insert id="insertAddress" parameterType="com.zhouyunji.bean.address.Address">
-         insert into address(user_id,name,phone_no,town,detail,isDefault,district_code)
-        values (#{userId},#{name},#{phoneNo},#{town},#{detail},#{isDefault},#{districtCode})
+         insert into address(openid,name,phone_no,town,detail,isDefault,district_code)
+        values (#{openid},#{name},#{phoneNo},#{town},#{detail},#{isDefault},#{districtCode})
     </insert>
 
     <select id="getAllAddress" resultType="com.zhouyunji.bean.address.Address" resultMap="trans">
-        select * from address where user_id = #{userId}
+        select * from address where openid = #{openid}
     </select>
 
     <select id="getAddressStrById" resultType="java.lang.String">
@@ -34,7 +34,7 @@
 
     <resultMap id="trans" type="com.zhouyunji.bean.address.Address">
         <id column="id" property="id"/>
-        <result column="user_id" property="userId"/>
+        <result column="openid" property="openid"/>
         <result column="name" property="name"/>
         <result column="phone_no" property="phoneNo"/>
         <result column="town" property="town"/>

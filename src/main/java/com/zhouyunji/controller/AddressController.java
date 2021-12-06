@@ -2,6 +2,7 @@ package com.zhouyunji.controller;
 
 import com.zhouyunji.bean.address.Address;
 import com.zhouyunji.service.AddressService;
+import com.zhouyunji.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -40,13 +41,15 @@ public class AddressController {
 
     /**
      * 查询个人已有收货地址
-     * @param userId  用户id
+     *
+     * @param token
      * @return
      */
     @GetMapping(value = "/query")
     @ResponseBody
-    public List<Address> queryAllAddresses(Integer userId) {
-        return addressService.queryAddresses(userId);
+    public List<Address> queryAllAddresses(String token) {
+        String openid = TokenUtil.analysisToken(token);
+        return addressService.queryAddresses(openid);
     }
 
     /**

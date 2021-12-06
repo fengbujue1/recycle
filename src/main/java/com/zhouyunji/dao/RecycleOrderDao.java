@@ -10,7 +10,7 @@ import java.util.List;
 @Mapper
 public interface RecycleOrderDao {
     void insertRecycleOrder(RecycleOrderPo recycleOrderPo);
-    void updateStatus(Integer status,String orderId);
+    void updateStatus(@Param("status")Integer status,@Param("orderId")String orderId);
 
     List<RecycleOrderPo> queryOrdersByUserIdAndStatus(@Param("openid") String openid, @Param("status")int status);
 }
