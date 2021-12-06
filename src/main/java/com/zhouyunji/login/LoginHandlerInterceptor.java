@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginHandlerInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//        Object user = request.getSession().getAttribute(SessionKeys.USER_ID);
-//        System.out.println("preHandle----"+ user + " ::: " + request.getRequestURL());
-//        if (user == null) {
+        String authorization = (String) request.getHeader("Authorization");
+        request.setAttribute("userId","1");
+
+        System.out.println("preHandle----"+ authorization + " ::: " + request.getRequestURL());
+//        if (authorization == null) {
 //            // 跳转到登录页面
 //            response.sendRedirect("/QR/toLogin");
-//            return false;
+//            return true;
 //        }
         return true;
     }

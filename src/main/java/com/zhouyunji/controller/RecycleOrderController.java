@@ -1,12 +1,9 @@
 package com.zhouyunji.controller;
 
-import com.zhouyunji.bean.address.Address;
 import com.zhouyunji.bean.recycle.RecycleOrderVo;
 import com.zhouyunji.bean.recycle.enmu.OrderStatus;
-import com.zhouyunji.dao.RecycleOrderDao;
-import com.zhouyunji.service.AddressService;
 import com.zhouyunji.service.RecycleOrderService;
-import com.zhouyunji.util.StringUtils;
+import com.zhouyunji.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +26,6 @@ public class RecycleOrderController {
     @PutMapping(value = "/submit",produces = "application/json;charset=UTF-8")
     @ResponseBody
     public String submit(@RequestBody RecycleOrderVo recycleOrderVo) {
-
         String result = "fail";
         try {
             recycleOrderService.submitOrder(recycleOrderVo);
@@ -42,14 +38,15 @@ public class RecycleOrderController {
 
     /**
      * 订单查询
-     * @param userId
+     * @param token
      * @param status
      * @return
      */
     @GetMapping(value = "/query")
     @ResponseBody
-    public List<RecycleOrderVo> query(String userId, int status) {
-        return recycleOrderService.queryOrders(userId, status);
+    public List<RecycleOrderVo> query(String token, int status) {
+        String openId = TokenUtil.analysisToken(token);
+        return recycleOrderService.queryOrders(openId, status);
     }
 
     /**
@@ -57,11 +54,12 @@ public class RecycleOrderController {
      */
     @DeleteMapping(value = "/delete")
     @ResponseBody
-    public List<RecycleOrderVo> delete(String orederId, Integer currentStatusIndex, String userId) {
+    public List<RecycleOrderVo> delete(String orederId, Integer currentStatusIndex, String token) {
         if (currentStatusIndex > OrderStatus.ACCEPTED.statusCode()) {
             throw new RuntimeException("当前状态订单不可取消");
         }
-        return recycleOrderService.cancelOrder(orederId, userId, currentStatusIndex);
+        String openId = TokenUtil.analysisToken(token);
+        return recycleOrderService.cancelOrder(orederId, openId, currentStatusIndex);
 
     }
 }

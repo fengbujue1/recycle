@@ -45,7 +45,7 @@ public class UserService {
         BeanCopyUtil.copyProperties(user, userInfoVO, null);
         userInfoVO.setSupplement(true);
 
-        String token = sessionKey;
+        String token = openId+"1";
         //TODO 要加密一个token
         userInfoVO.setToken(token);
         return userInfoVO;
@@ -68,7 +68,7 @@ public class UserService {
         UserInfoPo user = userDao.getUser(openId);
         UserInfoVO userInfoVO = new UserInfoVO();
 
-        String token = sessionKey;
+        String token = openId+"1";
         //TODO 要加密一个token
         userInfoVO.setToken(token);
 

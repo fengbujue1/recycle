@@ -19,7 +19,6 @@ public class TestRecycleOrderVO {
         recycleOrderVo.setRemark("asdasdasdad");
         recycleOrderVo.setStatus(OrderStatus.NOT_ACCEPT.statusCode());
         recycleOrderVo.setTime(new Date());
-        recycleOrderVo.setUserId(1);
 
         ArrayList<RecycleItem> recycleItems = new ArrayList<>();
         RecycleItem recycleItem = new RecycleItem();

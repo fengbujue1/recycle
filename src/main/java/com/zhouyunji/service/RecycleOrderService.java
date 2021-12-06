@@ -11,6 +11,7 @@ import com.zhouyunji.dao.RecycleItemDao;
 import com.zhouyunji.dao.RecycleOrderDao;
 import com.zhouyunji.util.BeanCopyUtil;
 import com.zhouyunji.util.StringUtils;
+import com.zhouyunji.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +36,9 @@ public class RecycleOrderService {
     @Transactional
     public void submitOrder(RecycleOrderVo recycleOrderVo) throws ParseException {
         RecycleOrderPo recycleOrderPo = new RecycleOrderPo();
+
+        String token = recycleOrderVo.getToken();
+        recycleOrderVo.setOpenid(TokenUtil.analysisToken(token));
 
         //        重新转换时间
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
@@ -63,9 +67,9 @@ public class RecycleOrderService {
     }
 
     @Transactional
-    public List<RecycleOrderVo> queryOrders(String userId, int status) {
+    public List<RecycleOrderVo> queryOrders(String openid, int status) {
         OrderStatus orderStatus = OrderStatus.getStatusByCode(status);
-        List<RecycleOrderPo> recycleOrderPos = recycleOrderDao.queryOrdersByUserIdAndStatus(userId, orderStatus.statusCode());
+        List<RecycleOrderPo> recycleOrderPos = recycleOrderDao.queryOrdersByUserIdAndStatus(openid, orderStatus.statusCode());
 
         ArrayList<RecycleOrderVo> recycleOrderVos = new ArrayList<>();
         for (int i = 0; i < recycleOrderPos.size(); i++) {
@@ -98,9 +102,9 @@ public class RecycleOrderService {
      * @param orderId
      * @return
      */
-    public List<RecycleOrderVo> cancelOrder(String orderId,String userId, int currentStatusIndex) {
+    public List<RecycleOrderVo> cancelOrder(String orderId,String openId, int currentStatusIndex) {
         recycleOrderDao.updateStatus(OrderStatus.CANCLED.statusCode(),orderId);
-        return queryOrders(userId, currentStatusIndex);
+        return queryOrders(openId, currentStatusIndex);
 
     }
 

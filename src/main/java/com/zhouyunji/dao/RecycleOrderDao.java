@@ -12,5 +12,5 @@ public interface RecycleOrderDao {
     void insertRecycleOrder(RecycleOrderPo recycleOrderPo);
     void updateStatus(Integer status,String orderId);
 
-    List<RecycleOrderPo> queryOrdersByUserIdAndStatus(@Param("userId") String userId, @Param("status")int status);
+    List<RecycleOrderPo> queryOrdersByUserIdAndStatus(@Param("openid") String openid, @Param("status")int status);
 }

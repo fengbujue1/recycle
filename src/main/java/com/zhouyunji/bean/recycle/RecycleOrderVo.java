@@ -9,7 +9,8 @@ import java.util.List;
 public class RecycleOrderVo {
     //    private Integer id;
     private String orderId;//订单Id使用uuid
-    private Integer userId;//用户id
+    private String token;//token
+    private String openid;//用户微信唯一id
     private Integer recycleType;//1:废纸 2：塑料 3：家电 4：手机
     private List<RecycleItem> items;
     private Date time;//预约时间，为空则代表尽快上门
@@ -54,12 +55,20 @@ public class RecycleOrderVo {
         this.orderId = orderId;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public String getToken() {
+        return token;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getOpenid() {
+        return openid;
+    }
+
+    public void setOpenid(String openid) {
+        this.openid = openid;
     }
 
     public Integer getRecycleType() {
