@@ -11,15 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 public class LoginHandlerInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String authorization = (String) request.getHeader("Authorization");
+        String token = (String) request.getHeader("token");
         request.setAttribute("userId","1");
 
-        System.out.println("preHandle----"+ authorization + " ::: " + request.getRequestURL());
-//        if (authorization == null) {
-//            // 跳转到登录页面
-//            response.sendRedirect("/QR/toLogin");
-//            return true;
-//        }
+        System.out.println("preHandle----" + token + " ::: " + request.getRequestURL());
+        //TODO 此处需要做一个token解码校验
+        if (token == null) {
+            // 跳转到登录页面
+            System.out.println("preHandle----"+ "notoken" + " ::: " + request.getRequestURL());
+            return false;
+        }
         return true;
     }
 }
