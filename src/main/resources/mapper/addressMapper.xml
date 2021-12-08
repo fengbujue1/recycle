@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhouyunji.dao.AddressDao">
 
-    <insert id="insertAddress" parameterType="com.zhouyunji.bean.address.Address">
+    <insert id="insertAddress" parameterType="com.zhouyunji.bean.address.AddressPo">
          insert into address(openid,name,phone_no,town,detail,isDefault,district_code)
         values (#{openid},#{name},#{phoneNo},#{town},#{detail},#{isDefault},#{districtCode})
     </insert>
 
-    <select id="getAllAddress" resultType="com.zhouyunji.bean.address.Address" resultMap="trans">
+    <select id="getAllAddress" resultType="com.zhouyunji.bean.address.AddressPo" resultMap="trans">
         select * from address where openid = #{openid}
     </select>
 
@@ -19,7 +19,7 @@
         delete from address where id = #{id}
     </delete>
 
-    <update id="updateAddress" parameterType="com.zhouyunji.bean.address.Address">
+    <update id="updateAddress" parameterType="com.zhouyunji.bean.address.AddressPo">
         update address
         <trim prefix="set" suffixOverrides=",">
             <if test="name != null">name=#{name},</if>
@@ -32,7 +32,7 @@
         WHERE id=#{id};
     </update>
 
-    <resultMap id="trans" type="com.zhouyunji.bean.address.Address">
+    <resultMap id="trans" type="com.zhouyunji.bean.address.AddressPo">
         <id column="id" property="id"/>
         <result column="openid" property="openid"/>
         <result column="name" property="name"/>

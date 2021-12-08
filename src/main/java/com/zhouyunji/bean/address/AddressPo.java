@@ -1,46 +1,17 @@
 package com.zhouyunji.bean.address;
 
-public class Address {
+public class AddressPo {
     private String id;//地址唯一id
     private String token;//用户token
     private String name;//联系人姓名
     private String phoneNo;//联系电话
     private String town;//街道/乡镇
     private String districtCode;//区级码
-//    private String house;//小区
+    //    private String house;//小区
     private String detail;//详细地址（楼 栋 单元）
     private String openid;//唯一id
 
-    private String districtName;//区级地名
-    private String townName;//乡镇地名
-
-
     private boolean isDefault;//是否默认地址
-
-
-    public String getDistrictName() {
-        return districtName;
-    }
-
-    public void setDistrictName(String districtName) {
-        this.districtName = districtName;
-    }
-
-    public String getTownName() {
-        return townName;
-    }
-
-    public void setTownName(String townName) {
-        this.townName = townName;
-    }
-
-    public boolean isDefault() {
-        return isDefault;
-    }
-
-    public void setIsDefault(boolean aDefault) {
-        isDefault = aDefault;
-    }
 
     public String getId() {
         return id;
@@ -90,18 +61,6 @@ public class Address {
         this.districtCode = districtCode;
     }
 
-    public void setDefault(boolean aDefault) {
-        isDefault = aDefault;
-    }
-
-    //    public String getHouse() {
-//        return house;
-//    }
-//
-//    public void setHouse(String house) {
-//        this.house = house;
-//    }
-
     public String getDetail() {
         return detail;
     }
@@ -116,5 +75,13 @@ public class Address {
 
     public void setOpenid(String openid) {
         this.openid = openid;
+    }
+
+    public boolean isDefault() {
+        return isDefault;
+    }
+
+    public void setDefault(boolean aDefault) {
+        isDefault = aDefault;
     }
 }
