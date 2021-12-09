@@ -19,6 +19,6 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
             .addPathPatterns("/**")
             .excludePathPatterns("/login/*")
             .excludePathPatterns("/static/**")
-            .excludePathPatterns("/targetPic/**");
+            .excludePathPatterns("/hello/**");
     }
 }

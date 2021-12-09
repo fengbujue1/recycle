@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    public static final String URL = "https://api.weixin.qq.com/sns/jscode2session?appid=wxfac2efb98dbaebf6&secret=282b480a750e4acc4bbd63a2247919b5&grant_type=authorization_code&js_code=";
+    public static final String URL = "https://api.weixin.qq.com/sns/jscode2session?appid=wx5dc2f20c26c8b3c6&secret=af020c5dbd8b043c1c415d2de6c9766d&grant_type=authorization_code&js_code=";
 
     @Autowired
     UserDao userDao;
@@ -60,6 +60,7 @@ public class UserService {
         String code = registerInfo.getCode();
         String url = URL + code;
         String str = HTTPUtil.httpRequest(url);
+        System.out.println(str);
         JSONObject jsonObject = JSON.parseObject(str);
         String openId = (String)jsonObject.get("openid");
         String sessionKey = (String)jsonObject.get("session_key");
