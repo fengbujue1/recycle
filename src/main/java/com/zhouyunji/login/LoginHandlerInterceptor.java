@@ -1,6 +1,5 @@
 package com.zhouyunji.login;
 
-import com.zhouyunji.common.SessionKeys;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 

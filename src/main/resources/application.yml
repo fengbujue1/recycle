@@ -1,7 +1,15 @@
 server:
-  port: 8080
-  servlet:
-    context-path: /recycle
+  # https 加密端口号 8080
+  port: 443
+  ssl:
+    # SSL 证书路径，classpath 必不可少
+    key-store: classpath:6759745_zhouyunji.top.pfx
+    # SSL 证书密码
+    key-store-password: QA8WNSB9
+    # 证书类型
+    key-store-type: PKCS12
+    servlet:
+      context-path: /recycle
 spring:
 #  静态资源访问路径配置
   resources:
