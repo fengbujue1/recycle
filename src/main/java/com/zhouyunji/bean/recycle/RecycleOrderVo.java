@@ -11,7 +11,7 @@ public class RecycleOrderVo {
     private String orderId;//订单Id使用uuid
     private String token;//token
     private String openid;//用户微信唯一id
-    private Integer recycleType;//1:废纸 2：塑料 3：家电 4：手机
+    private Integer recycleType;//1:废纸 2：塑料 3：家电 4：手机------这条属性弃置2021.12.12
     private List<RecycleItem> items;
     private Date time;//预约时间，为空则代表尽快上门
     private String timeStr;//预约时间的字符串形式

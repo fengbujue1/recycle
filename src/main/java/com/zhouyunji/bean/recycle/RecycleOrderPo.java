@@ -7,7 +7,7 @@ public class RecycleOrderPo {
     private int id;
     private String orderId;//订单Id使用uuid
     private String openid;//用户微信唯一id
-    private Integer recycleType;//1:废纸 2：塑料 3：家电 4：手机
+    private Integer recycleType;//1:废纸 2：塑料 3：家电 4：手机  无用属性-----弃置2021.12.12
     private Date time;//为空则代表尽快上门
     private Date submitTime;//下单时间
     private int addressId;//回收地址

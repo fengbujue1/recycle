@@ -1,13 +1,15 @@
 package com.zhouyunji.bean.recycle.enmu;
 
 public enum RecycleKindByType {
-    MIXTURE_PAPE(0),//纯黄纸与纯花纸的混合
-    YELLOW_PAPE(1),//纯黄纸
-    FLOWER_PAPE(2),//纯花纸
-    OTHER_PAPE(3),//杂纸
-    PLASTIC_BOTTLE(4),//塑料瓶
-    NORMAL_APPLIANCES(5),//家电
-    NORMAL_PHONE(6);//手机
+    MIXTURE_PAPE(1),//纯黄纸与纯花纸的混合
+    YELLOW_PAPE(2),//纯黄纸
+    FLOWER_PAPE(3),//纯花纸
+    OTHER_PAPE(4),//杂纸
+    PLASTIC_BOTTLE(5),//塑料瓶
+    BATTERY(6),//旧电池
+    SCRAP_IRON(7),//废铁
+    NORMAL_APPLIANCES(8),//家电
+    NORMAL_PHONE(9);//手机
 
     private int typeCode;
 
@@ -35,23 +37,29 @@ public enum RecycleKindByType {
             case 5:
                 return RecycleKindByType.PLASTIC_BOTTLE;
             case 6:
-                return RecycleKindByType.NORMAL_APPLIANCES;
+                return RecycleKindByType.BATTERY;
             case 7:
-                return RecycleKindByType.NORMAL_PHONE;
+                return RecycleKindByType.SCRAP_IRON;
         }
         throw new RuntimeException("错误的回收类型");
     }
 
     public static String getRecycleKindStrByCode(int typeCode) {
         switch (typeCode) {
-            case 0:
-                return "统纸（纯黄纸，纯花纸混合一块）";
             case 1:
-                return "纯黄纸（如空调箱，快递箱等）";
+                return "统纸（纯黄纸，纯花纸混合一块）";
             case 2:
-                return "纯花纸（如饮料箱等）";
+                return "纯黄纸（如空调箱，快递箱等）";
             case 3:
+                return "纯花纸（如饮料箱等）";
+            case 4:
                 return "杂纸";
+            case 5:
+                return "塑料瓶";
+            case 6:
+                return "旧电池";
+            case 7:
+                return "废铁";
         }
         throw new RuntimeException("错误的回收类型");
     }
