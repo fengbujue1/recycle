@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -16,6 +17,8 @@ import java.util.List;
 @Controller()
 @RequestMapping("/recycle")
 public class RecycleOrderController {
+    @Autowired
+    HttpServletRequest request;//todo 不会有并发问题？
     @Autowired
     RecycleOrderService recycleOrderService;
     /**
@@ -38,13 +41,13 @@ public class RecycleOrderController {
 
     /**
      * 订单查询
-     * @param token
      * @param status
      * @return
      */
     @GetMapping(value = "/query")
     @ResponseBody
-    public List<RecycleOrderVo> query(String token, int status) throws Exception {
+    public List<RecycleOrderVo> query(int status) throws Exception {
+        String token = request.getHeader("token");
         String openId = TokenUtil.analysisToken(token);
         return recycleOrderService.queryOrders(openId, status);
     }
@@ -54,7 +57,8 @@ public class RecycleOrderController {
      */
     @DeleteMapping(value = "/delete")
     @ResponseBody
-    public List<RecycleOrderVo> delete(String orederId, Integer currentStatusIndex, String token) throws Exception {
+    public List<RecycleOrderVo> delete(String orederId, Integer currentStatusIndex) throws Exception {
+        String token = request.getHeader("token");
         if (currentStatusIndex > OrderStatus.ACCEPTED.statusCode()) {
             throw new RuntimeException("当前状态订单不可取消");
         }

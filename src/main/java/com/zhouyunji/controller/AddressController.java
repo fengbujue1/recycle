@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -19,6 +20,8 @@ import java.util.List;
 public class AddressController {
     @Autowired
     AddressService addressService;
+    @Autowired
+    HttpServletRequest request;//todo 不会有并发问题？
     /**
      * 新增收货地址
      * @param address
@@ -42,12 +45,12 @@ public class AddressController {
     /**
      * 查询个人已有收货地址
      *
-     * @param token
      * @return
      */
     @GetMapping(value = "/query")
     @ResponseBody
-    public List<Address> queryAllAddresses(String token) throws Exception {
+    public List<Address> queryAllAddresses() throws Exception {
+        String token = request.getHeader("token");
         String openid = TokenUtil.analysisToken(token);
         return addressService.queryAddresses(openid);
     }
@@ -61,7 +64,7 @@ public class AddressController {
      */
     @PostMapping(value = "/delete/{id}")
     @ResponseBody
-    public  String deleteAddress(@PathVariable Integer id,Integer userId) {
+    public  String deleteAddress(@PathVariable Integer id) {
         String result = "fail";
         try {
             addressService.deleteAddress(id);
