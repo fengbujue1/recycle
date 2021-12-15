@@ -47,7 +47,7 @@ public class AddressController {
      */
     @GetMapping(value = "/query")
     @ResponseBody
-    public List<Address> queryAllAddresses(String token) {
+    public List<Address> queryAllAddresses(String token) throws Exception {
         String openid = TokenUtil.analysisToken(token);
         return addressService.queryAddresses(openid);
     }

@@ -44,7 +44,7 @@ public class RecycleOrderController {
      */
     @GetMapping(value = "/query")
     @ResponseBody
-    public List<RecycleOrderVo> query(String token, int status) {
+    public List<RecycleOrderVo> query(String token, int status) throws Exception {
         String openId = TokenUtil.analysisToken(token);
         return recycleOrderService.queryOrders(openId, status);
     }
@@ -54,7 +54,7 @@ public class RecycleOrderController {
      */
     @DeleteMapping(value = "/delete")
     @ResponseBody
-    public List<RecycleOrderVo> delete(String orederId, Integer currentStatusIndex, String token) {
+    public List<RecycleOrderVo> delete(String orederId, Integer currentStatusIndex, String token) throws Exception {
         if (currentStatusIndex > OrderStatus.ACCEPTED.statusCode()) {
             throw new RuntimeException("当前状态订单不可取消");
         }

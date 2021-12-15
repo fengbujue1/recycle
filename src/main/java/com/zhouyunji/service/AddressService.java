@@ -52,7 +52,7 @@ public class AddressService {
     }
 
     @Transactional
-    public void addAddress(Address address) {
+    public void addAddress(Address address) throws Exception {
         String token = address.getToken();
         String openid = TokenUtil.analysisToken(token);
         address.setOpenid(openid);
@@ -86,7 +86,7 @@ public class AddressService {
     public void deleteAddress(Integer id) {
         addressDao.deleteAddress(id);
     }
-    public void updateAddress(Address address) {
+    public void updateAddress(Address address) throws Exception {
         String token = address.getToken();
         String openid = TokenUtil.analysisToken(token);
         address.setOpenid(openid);

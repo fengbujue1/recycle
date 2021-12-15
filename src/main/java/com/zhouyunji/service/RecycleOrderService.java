@@ -34,7 +34,7 @@ public class RecycleOrderService {
     AddressDao addressDao;
 
     @Transactional
-    public void submitOrder(RecycleOrderVo recycleOrderVo) throws ParseException {
+    public void submitOrder(RecycleOrderVo recycleOrderVo) throws Exception {
         RecycleOrderPo recycleOrderPo = new RecycleOrderPo();
 
         String token = recycleOrderVo.getToken();

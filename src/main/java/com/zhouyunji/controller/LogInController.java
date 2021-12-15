@@ -30,7 +30,7 @@ public class LogInController {
      */
     @PostMapping(value = "/login")
     @ResponseBody
-    public UserInfoVO login(String code) {
+    public UserInfoVO login(String code) throws Exception {
         return userService.addUser(code);
     }
 
@@ -42,7 +42,7 @@ public class LogInController {
      */
     @PostMapping(value = "/register")
     @ResponseBody
-    public UserInfoVO addAddress(@RequestBody RegisterInfo registerInfo) {
+    public UserInfoVO addAddress(@RequestBody RegisterInfo registerInfo) throws Exception {
         return userService.addUser(registerInfo);
 
     }

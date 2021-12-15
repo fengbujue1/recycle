@@ -8,6 +8,7 @@ import com.zhouyunji.bean.user.UserInfoVO;
 import com.zhouyunji.dao.UserDao;
 import com.zhouyunji.util.BeanCopyUtil;
 import com.zhouyunji.util.HTTPUtil;
+import com.zhouyunji.util.TokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,7 @@ public class UserService {
      * @param code
      * @return
      */
-    public UserInfoVO addUser(String code) {
+    public UserInfoVO addUser(String code) throws Exception {
         String url = URL + code;
         String str = HTTPUtil.httpRequest(url);
         JSONObject jsonObject = JSON.parseObject(str);
@@ -45,8 +46,7 @@ public class UserService {
         BeanCopyUtil.copyProperties(user, userInfoVO, null);
         userInfoVO.setSupplement(true);
 
-        String token = openId+"1";
-        //TODO 要加密一个token
+        String token =  TokenUtil.getToken(openId);;
         userInfoVO.setToken(token);
         return userInfoVO;
     }
@@ -56,7 +56,7 @@ public class UserService {
      * @param registerInfo
      * @return
      */
-    public UserInfoVO addUser(RegisterInfo registerInfo) {
+    public UserInfoVO addUser(RegisterInfo registerInfo) throws Exception {
         String code = registerInfo.getCode();
         String url = URL + code;
         String str = HTTPUtil.httpRequest(url);
@@ -69,8 +69,7 @@ public class UserService {
         UserInfoPo user = userDao.getUser(openId);
         UserInfoVO userInfoVO = new UserInfoVO();
 
-        String token = openId+"1";
-        //TODO 要加密一个token
+        String token = TokenUtil.getToken(openId);
         userInfoVO.setToken(token);
 
         if (user == null) {
