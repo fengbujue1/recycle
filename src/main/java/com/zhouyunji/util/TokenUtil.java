@@ -59,7 +59,7 @@ public class TokenUtil {
     public static String analysisToken(String token) throws Exception {
         System.out.println("token:  " + token);
         byte[] decode = Base64Utils.decodeFromString(token);
-        return cipher2.doFinal(decode).toString();
+        return new String(cipher2.doFinal(decode));
     }
 
     public static String getToken(String openid) throws Exception {
