@@ -1,4 +1,4 @@
-package com.zhouyunji.login;
+package com.zhouyunji.Interceptor;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -25,7 +25,7 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
             .excludePathPatterns("/");
     }
     @Override
-    //è§£å†³  No mapping for GET /favicon.ico è®¿é—®é™æ€èµ„æºå›¾æ ‡
+    //½â¾ö  No mapping for GET /favicon.ico ·ÃÎÊ¾²Ì¬×ÊÔ´Í¼±ê
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/favicon.ico")
                 .addResourceLocations("classpath:/static/")
