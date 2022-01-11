@@ -1,6 +1,6 @@
 package com.zhouyunji.controller;
 
-import org.apache.shiro.authz.annotation.RequiresRoles;
+//import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloController {
     @GetMapping(value = "/hello")
     @ResponseBody
-    @RequiresRoles("")
+//    @RequiresRoles("")
     public String hello() {
         return "hello";
     }

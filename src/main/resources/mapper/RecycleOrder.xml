@@ -3,8 +3,8 @@
 <mapper namespace="com.zhouyunji.dao.RecycleOrderDao">
 
     <insert id="insertRecycleOrder" parameterType="com.zhouyunji.bean.recycle.RecycleOrderPo">
-         insert into recycle_order(order_id,openid,recycle_type,address_id,time,remark,status,submit_time)
-        values (#{orderId},#{openid},#{recycleType},#{addressId},#{time},#{remark},#{status},#{submitTime})
+         insert into recycle_order(order_id,openid,address_id,time,remark,status,submit_time)
+        values (#{orderId},#{openid},#{addressId},#{time},#{remark},#{status},#{submitTime})
     </insert>
 
     <select id="queryOrdersByUserIdAndStatus" resultType="com.zhouyunji.bean.recycle.RecycleOrderPo" resultMap="trans">
