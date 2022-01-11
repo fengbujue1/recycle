@@ -1,6 +1,6 @@
 server:
-  # https 加密端口号 8081
-  port: 8081
+  # https 加密端口号 443 https的默认端口号，可以在浏览器不输入端口的情况下 传到tomcat,监听其他端口的话就需要用Ngnix做代理
+  port: 443
   ssl:
     # SSL 证书路径，classpath 必不可少
     key-store: classpath:6759745_zhouyunji.top.pfx
@@ -8,8 +8,9 @@ server:
     key-store-password: QA8WNSB9
     # 证书类型
     key-store-type: PKCS12
-  servlet:
-      context-path: /recycle
+#    不设置项目路径，为了能够通过首页访问
+#  servlet:
+#      context-path: /recycle
 spring:
 #  静态资源访问路径配置
   resources:
