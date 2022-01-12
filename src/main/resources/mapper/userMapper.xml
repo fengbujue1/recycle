@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zhouyunji.dao.UserDao">
 
+<!--    ????错了吧-->
     <insert id="addUser" parameterType="com.zhouyunji.dao.UserDao">
          insert into user(openid)
         values (#{openid})

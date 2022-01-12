@@ -2,7 +2,6 @@ package com.zhouyunji.bean.address;
 
 public class AddressPo {
     private String id;//地址唯一id
-    private String token;//用户token
     private String name;//联系人姓名
     private String phoneNo;//联系电话
     private String town;//街道/乡镇
@@ -19,14 +18,6 @@ public class AddressPo {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 
     public String getName() {

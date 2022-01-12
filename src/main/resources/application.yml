@@ -19,8 +19,13 @@ spring:
     static-path-pattern: /static/**
 
   datasource:
-    username: fengbujue233
-    password: zhouyunji1314
+#    在家时候本地用这个
+#    username: fengbujue233
+#    password: zhouyunji1314
+
+#    上云服务器用这个
+    username: fengbujue235
+    password: zhouyunji1316
     url: jdbc:mysql://47.96.0.106:3306/recycle
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
