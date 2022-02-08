@@ -25,7 +25,6 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
             .excludePathPatterns("/");
     }
     @Override
-    //解决  No mapping for GET /favicon.ico 访问静态资源图标
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/favicon.ico")
                 .addResourceLocations("classpath:/static/")
