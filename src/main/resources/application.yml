@@ -9,8 +9,8 @@ server:
     # 证书类型
     key-store-type: PKCS12
 #    不设置项目路径，为了能够通过首页访问
-#  servlet:
-#      context-path: /recycle
+  servlet:
+      context-path: /recycle
 spring:
 #  静态资源访问路径配置
   resources:

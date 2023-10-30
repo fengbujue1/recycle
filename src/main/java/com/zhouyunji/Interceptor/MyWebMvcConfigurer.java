@@ -7,7 +7,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
-@Configuration
+//@Configuration
 public class MyWebMvcConfigurer implements WebMvcConfigurer {
 //    @Override
 //    public void addViewControllers(ViewControllerRegistry viewControllerRegistry) {
@@ -16,7 +16,8 @@ public class MyWebMvcConfigurer implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor())
+        registry
+                .addInterceptor(new LoginHandlerInterceptor())
             .addPathPatterns("/**")
             .excludePathPatterns("/login/*")
             .excludePathPatterns("/static/**")
