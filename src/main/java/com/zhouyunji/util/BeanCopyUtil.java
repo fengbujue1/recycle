@@ -28,6 +28,8 @@ public class BeanCopyUtil {
      * @param prefix 属性前缀：默认为""
      */
     public static void copyProperties(Object src, Object tar, String prefix) {
+        //为了让assertion生效，你需要在启动Java时启用它们，通常是通过添加-ea或-enableassertions选项到命令行。
+        //在生产环境中，断言通常被禁用，因为它们可能会影响性能。断言主要用于开发和测试阶段，用于捕获那些“这不应该发生”的情况。
         assert src == null : "src is null";
         assert tar == null : "tar is null";
         String p = prefix == null ? "" : prefix;
